@@ -8,7 +8,7 @@ import { allProducts, Product } from "../../../products";
 export default function Page({
   product,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductPage product={product} mode="ssr" />;
+  return <ProductPage product={product} showFallback={false} mode="ssr" />;
 }
 
 export const getServerSideProps: GetServerSideProps<{

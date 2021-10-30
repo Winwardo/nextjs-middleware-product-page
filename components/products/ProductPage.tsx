@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { Fragment, useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 
@@ -37,15 +38,49 @@ export default function ProductPage({
   );
 }
 
+export const authCookieName = "Authorization";
 function ExampleInformation() {
-  const cookies = new Cookies().getAll();
-  const auth = cookies["Authorization"];
+  const router = useRouter();
+
+  const universalCookie = new Cookies();
+  const cookies = universalCookie.getAll();
+  const auth = cookies[authCookieName];
 
   return (
-    <div>
+    <div className="">
       <div>
         <span>Auth?</span>
         <span>{auth ? auth : "None"}</span>
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            universalCookie.remove(authCookieName, { path: "/" });
+            router.reload();
+          }}
+        >
+          Clear auth cookie
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            universalCookie.set(authCookieName, "red-company", { path: "/" });
+            router.reload();
+          }}
+        >
+          Auth as red-company
+        </button>
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            universalCookie.set(authCookieName, "blue-company", { path: "/" });
+            router.reload();
+          }}
+        >
+          Auth as blue-company
+        </button>
       </div>
     </div>
   );
