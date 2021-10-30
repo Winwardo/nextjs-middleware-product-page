@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<{
       product: product ?? null,
       datetime: new Date().toISOString(),
     },
-    revalidate: 30,
+    revalidate: 60,
   };
 };
 
