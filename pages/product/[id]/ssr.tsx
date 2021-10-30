@@ -8,11 +8,7 @@ import { allProducts, Product } from "../../../products";
 export default function Page({
   product,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  if (product === null) {
-    return <ProductNotFound />;
-  }
-
-  return <ProductPage product={product} />;
+  return <ProductPage product={product} mode="ssr" />;
 }
 
 export const getServerSideProps: GetServerSideProps<{
@@ -24,9 +20,12 @@ export const getServerSideProps: GetServerSideProps<{
 
   const product = allProducts.find((product) => {
     const productIdMatches = product.id === productId;
-    const authMatches = product.sellerId === auth;
 
-    return productIdMatches && authMatches;
+    const authMatches = product.sellerId === auth;
+    const isPublic = product.private === false;
+    const canView = authMatches || isPublic;
+
+    return productIdMatches && canView;
   });
 
   return {

@@ -10,15 +10,13 @@ export default function Page({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Loading</div>;
-  }
-
-  if (product === null) {
-    return <ProductNotFound />;
-  }
-
-  return <ProductPage product={product} />;
+  return (
+    <ProductPage
+      product={product}
+      showFallback={router.isFallback}
+      mode="static"
+    />
+  );
 }
 
 export const getStaticProps: GetStaticProps<{ product: Product | null }> =

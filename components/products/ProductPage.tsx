@@ -4,11 +4,31 @@ import Cookies from "universal-cookie";
 
 import { allProducts, Product } from "../../products";
 import ProductCard from "./ProductCard";
+import { ProductNotFound } from "./ProductNotFound";
 
-export default function ProductPage({ product }: { product: Product }) {
+export default function ProductPage({
+  product,
+  showFallback,
+  mode,
+}: {
+  product: Product | null;
+  showFallback: boolean;
+  mode: "static" | "ssr";
+}) {
   return (
     <div>
-      <ProductCard product={product} />
+      <div>
+        {mode === "static"
+          ? "Rendered statically from cache."
+          : "Rendered using SSR."}
+      </div>
+      {showFallback ? (
+        <div>Generating static page</div>
+      ) : product ? (
+        <ProductCard product={product} />
+      ) : (
+        <ProductNotFound />
+      )}
       <BrowserOnly>
         <ExampleInformation />
         <AllProducts />
@@ -75,7 +95,7 @@ function ProductList({ products }: { products: Array<Product> }) {
         return (
           <Fragment key={product.id}>
             <li>
-              <Link href={`product/${product.id}`}>{product.name}</Link>
+              <Link href={`/product/${product.id}`}>{product.name}</Link>
             </li>
           </Fragment>
         );

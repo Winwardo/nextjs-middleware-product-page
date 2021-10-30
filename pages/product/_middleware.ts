@@ -1,12 +1,21 @@
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 import { getCookies } from "../../lib/middleware/getCookies";
+import { getProductById } from "../../products";
 
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   const cookies = getCookies(req);
   const auth = cookies["Authorization"];
+  const productId = req.page.params?.id;
 
-  if (auth !== undefined) {
-    return NextResponse.rewrite(`${req.nextUrl.pathname}/ssr`);
+  if (productId) {
+    if (auth) {
+      // Only do a more expensive check to the database if we have reason to believe they're a seller
+      const product = await getProductById(productId);
+
+      if (auth === product?.sellerId) {
+        return NextResponse.rewrite(`${req.nextUrl.pathname}/ssr`);
+      }
+    }
   }
 
   return NextResponse.next();
