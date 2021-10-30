@@ -1,5 +1,4 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { ProductNotFound } from "../../../components/products/ProductNotFound";
 
 import ProductPage from "../../../components/products/ProductPage";
 import { getCookies } from "../../../lib/api/getCookies";
@@ -7,12 +6,21 @@ import { allProducts, Product } from "../../../products";
 
 export default function Page({
   product,
+  datetime,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <ProductPage product={product} showFallback={false} mode="ssr" />;
+  return (
+    <ProductPage
+      product={product}
+      renderedAt={datetime}
+      showFallback={false}
+      mode="ssr"
+    />
+  );
 }
 
 export const getServerSideProps: GetServerSideProps<{
   product: Product | null;
+  datetime: string;
 }> = async (ctx) => {
   const productId = ctx.params?.id;
   const cookies = getCookies(ctx);
@@ -31,6 +39,7 @@ export const getServerSideProps: GetServerSideProps<{
   return {
     props: {
       product: product ?? null,
+      datetime: new Date().toISOString(),
     },
   };
 };

@@ -1,3 +1,4 @@
+import { parseISO, formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { Fragment, useEffect, useState } from "react";
@@ -9,19 +10,38 @@ import { ProductNotFound } from "./ProductNotFound";
 
 export default function ProductPage({
   product,
+  renderedAt,
   showFallback,
   mode,
 }: {
   product: Product | null;
+  renderedAt: string;
   showFallback: boolean;
   mode: "static" | "ssr";
 }) {
   return (
     <div>
       <div>
-        {mode === "static"
-          ? "Rendered statically from cache."
-          : "Rendered using SSR."}
+        {mode === "static" ? (
+          <>Rendered statically from cache.</>
+        ) : (
+          <>Rendered using SSR.</>
+        )}
+      </div>
+      <div>
+        {renderedAt && (
+          <span>
+            Rendered at {renderedAt}
+            <BrowserOnly>
+              ,{" "}
+              {formatDistanceToNow(parseISO(renderedAt), {
+                includeSeconds: true,
+                addSuffix: true,
+              })}
+            </BrowserOnly>
+            .
+          </span>
+        )}
       </div>
       {showFallback ? (
         <div>Generating static page</div>
