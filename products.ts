@@ -8,14 +8,6 @@ export type Product = {
   sellerId: string;
 };
 
-type Seller = {
-  id: string;
-};
-
-const seller1 = {
-  id: "shoe-company",
-};
-
 export const allProducts: Array<Product> = [
   {
     id: "red-shoes",
@@ -26,6 +18,34 @@ export const allProducts: Array<Product> = [
     image: "",
     private: false,
     sellerId: "shoe-company",
+  },
+  {
+    id: "blue-shoes",
+    name: "Blue Shoes",
+    description: "Decent blue shoes. +5 speed.",
+    price: 2000,
+    image: "",
+    private: true,
+    sellerId: "shoe-company",
+  },
+  {
+    id: "red-hat",
+    name: "Red Hat",
+    description:
+      "This red hat will let everyone know you're the cream of the crop.",
+    price: 5000,
+    image: "",
+    private: false,
+    sellerId: "hat-company",
+  },
+  {
+    id: "blue-hat",
+    name: "Blue Hat",
+    description: "This Blue Hat is so great it's not even released yet!",
+    price: 15000,
+    image: "",
+    private: true,
+    sellerId: "hat-company",
   },
 ];
 

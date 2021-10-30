@@ -1,9 +1,6 @@
 import { Product } from "../../products";
+import ProductCard from "./ProductCard";
 
 export default function ProductPage({ product }: { product: Product }) {
-  return (
-    <div>
-      <h1>{product.name}</h1>
-    </div>
-  );
+  return <ProductCard product={product} />;
 }

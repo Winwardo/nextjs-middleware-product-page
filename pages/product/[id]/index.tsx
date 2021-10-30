@@ -1,8 +1,9 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/dist/client/router";
+import { ProductNotFound } from "../../../components/products/ProductNotFound";
 
-import ProductPage from "../../components/products/ProductPage";
-import { allProducts, Product, publicProducts } from "../../products";
+import ProductPage from "../../../components/products/ProductPage";
+import { Product, publicProducts } from "../../../products";
 
 export default function Page({
   product,
@@ -14,7 +15,7 @@ export default function Page({
   }
 
   if (product === null) {
-    return <div>Product not found</div>;
+    return <ProductNotFound />;
   }
 
   return <ProductPage product={product} />;
