@@ -9,6 +9,7 @@ export function ProductNotFound() {
         height={400}
         objectFit="cover"
         className="rounded"
+        alt="A question mark"
       />
       <div className="flex flex-col justify-between">
         <div>

@@ -11,6 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
         height={400}
         objectFit="cover"
         className="rounded"
+        alt=""
       />
       <div className="flex flex-col justify-between">
         <div>

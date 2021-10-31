@@ -65,8 +65,8 @@ export default function ProductPage({
                 <strong>Incremental Static Regeneration</strong>.
               </p>
               <p>
-                This is because either you're not logged in, or you're logged in
-                with a different seller.
+                This is because either you&apos;re not logged in, or you&apos;re
+                logged in with a different seller.
               </p>
             </>
           ) : (
@@ -75,20 +75,22 @@ export default function ProductPage({
                 Rendered using <strong>Server Side Rendering</strong>.
               </p>
               <p>
-                This was because you're logged in as the seller of this product.
+                This was because you&apos;re logged in as the seller of this
+                product.
               </p>
               <p>
                 {product?.private ? (
                   <>
                     This product is marked as <strong>private</strong>. This
-                    means you're viewing an up to date version of the page that
-                    a regular customer might see if it were marked as public.
+                    means you&apos;re viewing an up to date version of the page
+                    that a regular customer might see if it were marked as
+                    public.
                   </>
                 ) : (
                   <>
-                    This product is <strong>public</strong>. This means you're
-                    seeing an up to date version of the page, not a cached
-                    version that could be up to a minute old.
+                    This product is <strong>public</strong>. This means
+                    you&apos;re seeing an up to date version of the page, not a
+                    cached version that could be up to a minute old.
                   </>
                 )}
               </p>
@@ -134,8 +136,8 @@ function Auth() {
             </>
           ) : (
             <>
-              You have no Authorization cookie, you're viewing as the public
-              would do. All pages will be served statically.
+              You have no Authorization cookie, you&apos;re viewing as the
+              public would do. All pages will be served statically.
             </>
           )}
         </div>

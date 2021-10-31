@@ -9,13 +9,14 @@ export function GeneratingStaticPage() {
         height={400}
         objectFit="cover"
         className="rounded"
+        alt="A clock"
       />
       <div className="flex flex-col justify-between">
         <div>
           <h1 className="display-font text-4xl">Generating static page</h1>
           <p className="mt-4 text-gray-700">
-            This page hasn't been generated yet. Please wait for ISR to do its
-            thing!
+            This page hasn&apos;t been generated yet. Please wait for ISR to do
+            its thing!
           </p>
         </div>
       </div>
