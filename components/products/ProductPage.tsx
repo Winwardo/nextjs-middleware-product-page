@@ -1,4 +1,4 @@
-import { parseISO, formatDistanceToNow } from "date-fns";
+import { parseISO, formatDistanceToNow, min, formatDistance } from "date-fns";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { Fragment, useEffect, useState } from "react";
@@ -19,6 +19,17 @@ export default function ProductPage({
   showFallback: boolean;
   mode: "static" | "ssr";
 }) {
+  const now = new Date();
+  const renderedAtDate = renderedAt ? parseISO(renderedAt) : now;
+  const oldestDate = min([renderedAtDate, now]);
+  const formattedDistance = formatDistance(renderedAtDate, oldestDate, {
+    includeSeconds: true,
+    addSuffix: true,
+  });
+  const pageRenderedRelativeClient = (
+    <BrowserOnly>, {formattedDistance}</BrowserOnly>
+  );
+
   return (
     <div>
       <div>
@@ -32,14 +43,7 @@ export default function ProductPage({
         {renderedAt && (
           <span>
             Rendered at {renderedAt}
-            <BrowserOnly>
-              ,{" "}
-              {formatDistanceToNow(parseISO(renderedAt), {
-                includeSeconds: true,
-                addSuffix: true,
-              })}
-            </BrowserOnly>
-            .
+            {pageRenderedRelativeClient}.
           </span>
         )}
       </div>
