@@ -101,8 +101,9 @@ export default function ProductPage({
 
         <BrowserOnly>
           <Auth />
-          <AllProducts />
         </BrowserOnly>
+        <AllProducts />
+        <Explanation />
       </div>
     </div>
   );
@@ -219,6 +220,8 @@ export function AllProducts() {
   );
 }
 
+const linkClasses =
+  "underline text-blue-500 hover:text-blue-600 cursor-pointer";
 function ProductList({ products }: { products: Array<Product> }) {
   return (
     <ul>
@@ -227,7 +230,7 @@ function ProductList({ products }: { products: Array<Product> }) {
           <Fragment key={product.id}>
             <li>
               <Link href={`/product/${product.id}`} passHref>
-                <a className="underline text-blue-500 hover:text-blue-600 cursor-pointer">
+                <a className={linkClasses}>
                   {product.name} (by{" "}
                   <span className="text-semibold">{product.sellerId}</span>)
                 </a>
@@ -237,5 +240,44 @@ function ProductList({ products }: { products: Array<Product> }) {
         );
       })}
     </ul>
+  );
+}
+
+export function Explanation() {
+  return (
+    <Box className="space-y-4">
+      <h2 className="font-semibold">What is this website?</h2>
+      <p>
+        This site is designed to show off{" "}
+        <a
+          className={linkClasses}
+          href="https://nextjs.org/docs/middleware"
+          target="_blank"
+          rel="noopener"
+        >
+          NextJS 12's Middleware
+        </a>{" "}
+        functionality.{" "}
+      </p>
+      <p>
+        It does this by simulating a product website. Products may be sold by
+        multiple different sellers, and they may be marked as public or private.
+        Using middleware, we can deliver really fast cached static responses to
+        the public, while letting a seller view their page with the most up to
+        date server-rendered information.
+      </p>
+      <p>
+        A full blog post detailing this can be found at{" "}
+        <a
+          className={linkClasses}
+          href="https://topher.io"
+          target="_blank"
+          rel="noopener"
+        >
+          topher.io
+        </a>
+        .
+      </p>
+    </Box>
   );
 }
