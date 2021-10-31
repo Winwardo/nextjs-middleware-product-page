@@ -22,7 +22,7 @@ export default function ProductPage({
   const now = new Date();
   const renderedAtDate = renderedAt ? parseISO(renderedAt) : now;
   const oldestDate = min([renderedAtDate, now]);
-  const formattedDistance = formatDistance(renderedAtDate, oldestDate, {
+  const formattedDistance = formatDistance(renderedAtDate, now, {
     includeSeconds: true,
     addSuffix: true,
   });

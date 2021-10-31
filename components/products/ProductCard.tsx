@@ -3,7 +3,7 @@ import { Product } from "../../products";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="rounded-lg p-4 shadow-lg flex gap-x-8 border border-gray-100">
+    <div className="rounded-lg p-6 shadow-lg flex gap-x-6 border border-gray-100">
       <Image
         src={product.image}
         width={400}
