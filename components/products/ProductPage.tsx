@@ -1,4 +1,4 @@
-import { parseISO, formatDistanceToNow, min, formatDistance } from "date-fns";
+import { parseISO, min, formatDistanceStrict } from "date-fns";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { Fragment, useEffect, useState } from "react";
@@ -22,8 +22,7 @@ export default function ProductPage({
   const now = new Date();
   const renderedAtDate = renderedAt ? parseISO(renderedAt) : now;
   const oldestDate = min([renderedAtDate, now]);
-  const formattedDistance = formatDistance(renderedAtDate, now, {
-    includeSeconds: true,
+  const formattedDistance = formatDistanceStrict(renderedAtDate, now, {
     addSuffix: true,
   });
   const pageRenderedRelativeClient = (
