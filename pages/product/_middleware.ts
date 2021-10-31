@@ -12,6 +12,8 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
       // Only do a more expensive check to the database if we have reason to believe they're a seller
       const product = await getProductById(productId);
 
+      // Alternatively you could make anyone who's logged in as a seller see the SSR page
+      // Rather than do a database call in the middleware
       if (auth === product?.sellerId) {
         return NextResponse.rewrite(`${req.nextUrl.pathname}/ssr`);
       }

@@ -1,3 +1,4 @@
+import { delay } from "bluebird";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 import ProductPage from "../../../components/products/ProductPage";
@@ -35,6 +36,9 @@ export const getServerSideProps: GetServerSideProps<{
 
     return productIdMatches && canView;
   });
+
+  // Simulate a slow response
+  await delay(1000);
 
   return {
     props: {
