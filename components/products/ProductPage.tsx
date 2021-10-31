@@ -43,13 +43,17 @@ export default function ProductPage({
           </span>
         )}
       </div>
-      {showFallback ? (
-        <div>Generating static page</div>
-      ) : product ? (
-        <ProductCard product={product} />
-      ) : (
-        <ProductNotFound />
-      )}
+      <div className="w-full flex justify-center">
+        <div className="max-w-4xl">
+          {showFallback ? (
+            <div>Generating static page</div>
+          ) : product ? (
+            <ProductCard product={product} />
+          ) : (
+            <ProductNotFound />
+          )}
+        </div>
+      </div>
       <BrowserOnly>
         <ExampleInformation />
         <AllProducts />
