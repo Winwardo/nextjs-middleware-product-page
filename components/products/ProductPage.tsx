@@ -253,9 +253,9 @@ export function Explanation() {
           className={linkClasses}
           href="https://nextjs.org/docs/middleware"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer"
         >
-          NextJS 12's Middleware
+          NextJS 12&apos;s Middleware
         </a>{" "}
         functionality.{" "}
       </p>
