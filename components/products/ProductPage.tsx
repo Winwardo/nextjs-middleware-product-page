@@ -272,7 +272,7 @@ export function Explanation() {
           className={linkClasses}
           href="https://topher.io"
           target="_blank"
-          rel="noopener"
+          rel="noreferrer"
         >
           topher.io
         </a>
