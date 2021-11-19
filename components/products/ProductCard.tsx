@@ -5,11 +5,11 @@ import { Box } from "../Box";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Box className="flex gap-x-6">
-      <div style={{width: '400px', height: '400px'}}>
+      <div style={{width: '256px', height: '256px'}}>
         <Image
           src={product.image}
-          width={400}
-          height={400}
+          width={256}
+          height={256}
           objectFit="cover"
           className="rounded"
           alt=""
