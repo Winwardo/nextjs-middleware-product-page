@@ -5,15 +5,16 @@ import { Box } from "../Box";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Box className="flex gap-x-6">
-      <Image
-        src={product.image}
-        width={400}
-        height={400}
-        style={{width: '400px', height: '400px'}}
-        objectFit="cover"
-        className="rounded"
-        alt=""
-      />
+      <div style={{width: '400px', height: '400px'}}>
+        <Image
+          src={product.image}
+          width={400}
+          height={400}
+          objectFit="cover"
+          className="rounded"
+          alt=""
+        />
+      </div>
       <div className="flex flex-col justify-between">
         <div>
           <h1 className="display-font text-4xl">{product.name}</h1>
