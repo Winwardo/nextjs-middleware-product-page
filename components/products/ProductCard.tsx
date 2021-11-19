@@ -9,6 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
         src={product.image}
         width={400}
         height={400}
+        style={{width: '400px', height: '400px'}}
         objectFit="cover"
         className="rounded"
         alt=""
