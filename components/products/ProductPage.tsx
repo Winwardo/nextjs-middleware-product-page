@@ -43,10 +43,10 @@ export default function ProductPage({
   );
 
   return (
-    <div className="w-full flex justify-center">
-      <div className="max-w-3xl space-y-8 my-8">
-        <div className="w-full flex justify-center">
-          <div className="max-w-4xl">
+    <div className="flex justify-center w-full">
+      <div className="max-w-3xl my-8 space-y-8">
+        <div className="flex justify-center w-full">
+          <div className="w-full max-w-4xl">
             {showFallback ? (
               <GeneratingStaticPage />
             ) : product ? (
@@ -270,11 +270,11 @@ export function Explanation() {
         A full blog post detailing this can be found at{" "}
         <a
           className={linkClasses}
-          href="https://topher.io"
+          href="https://topher.io/writing/next-middleware-private-pages"
           target="_blank"
           rel="noreferrer"
         >
-          topher.io
+          topher.io/writing/next-middleware-private-pages
         </a>
         .
       </p>

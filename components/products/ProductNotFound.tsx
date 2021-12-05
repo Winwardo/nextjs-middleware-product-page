@@ -1,19 +1,22 @@
 import Image from "next/image";
+import { Box } from "../Box";
 
 export function ProductNotFound() {
   return (
-    <div className="rounded-lg p-4 shadow-lg flex gap-x-8 border border-gray-100">
-      <Image
-        src={"https://images.unsplash.com/photo-1599508704512-2f19efd1e35f"}
-        width={400}
-        height={400}
-        objectFit="cover"
-        className="rounded"
-        alt="A question mark"
-      />
+    <Box className="w-full grid grid-cols-[250px,auto] gap-x-6">
+      <div style={{ width: "250px", height: "250px" }}>
+        <Image
+          src={"https://images.unsplash.com/photo-1599508704512-2f19efd1e35f"}
+          width={"500px"}
+          height={"500px"}
+          objectFit="cover"
+          className="rounded"
+          alt="A question mark"
+        />
+      </div>
       <div className="flex flex-col justify-between">
         <div>
-          <h1 className="display-font text-4xl">
+          <h1 className="text-4xl display-font">
             This product could not be found
           </h1>
           <p className="mt-4 text-gray-700">
@@ -21,6 +24,6 @@ export function ProductNotFound() {
           </p>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
